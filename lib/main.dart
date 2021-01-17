@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
     },
     {
       'value': '15',
-      'label': 'QUINZ',
+      'label': 'QUINnZ',
       'icon': Icon(Icons.fiber_manual_record),
       'textStyle': TextStyle(color: Colors.red),
     },
