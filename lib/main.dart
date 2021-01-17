@@ -224,7 +224,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
               RaisedButton(
                 onPressed: () {
-                  audioCache.play(_valueChangeddd);
+                  if (_valueChanged=="10"  ){
+                    audioCache.play(_valueChangeddd);
+                  }
+
+
+
+
 
                 },
                 child: Text('GO'),
