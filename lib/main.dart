@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:select_form_field/select_form_field.dart';
 import 'classe count.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +24,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _oFormKeyy = GlobalKey<FormState>();
   TextEditingController _controller;
   TextEditingController _controllerr;
   //String _initialValue;
@@ -32,6 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
   String _valueChangedd = '';
   String _valueToValidatee = '';
   String _valueSavedd = '';
+  String _valueChangeddd = '';
+  String _valueToValidateee = '';
+  String _valueSaveddd = '';
+  AudioCache audioCache = new AudioCache();
 
   final List<Map<String, dynamic>> _items = [
     {
@@ -71,6 +77,25 @@ class _MyHomePageState extends State<MyHomePage> {
       'icon': Icon(Icons.grade),
     },
   ];
+  final List<Map<String, dynamic>> _itemsss = [
+    {
+      'value': 'hsabAr.mp3',
+      'label': 'arabic',
+      'icon': Icon(Icons.stop),
+    },
+    {
+      'value': 'hsabAr.mp3',
+      'label': 'arabic',
+      'icon': Icon(Icons.fiber_manual_record),
+      'textStyle': TextStyle(color: Colors.red),
+    },
+    {
+      'value': 'hsabFr.mp3',
+      'label': 'francais',
+      // 'enable': false,
+      'icon': Icon(Icons.grade),
+    },
+  ];
 
   @override
   void initState() {
@@ -94,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   var count = new Count();
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,6 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Form(
           key: _oFormKey,
+         // key: _oFormKey,
           child: Column(
             children: <Widget>[
 
@@ -146,6 +173,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 onSaved: (vall) => setState(() => _valueSavedd = vall),
               ),
+              SelectFormField(
+                //type: SelectFormFieldType.dialog,
+                controller: _controller,
+                //initialValue: _initialValue,
+                icon: Icon(Icons.format_shapes),
+                labelText: 'langue',
+                changeIcon: true,
+                dialogTitle: 'Pick a item',
+                dialogCancelBtn: 'CANCEL',
+                enableSearch: true,
+                dialogSearchHint: 'Search item',
+                items: _itemsss,
+                onChanged: (vall) => setState(() => _valueChangeddd = vall),
+                validator: (vall) {
+                  setState(() => _valueToValidateee = vall);
+                  return null;
+                },
+                onSaved: (vall) => setState(() => _valueSaveddd = vall),
+              ),
               SizedBox(height: 15),
               Text(
 
@@ -159,26 +205,46 @@ class _MyHomePageState extends State<MyHomePage> {
                 'nbre de serie choisi:',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
+
+
+
               SizedBox(height: 5),
               SelectableText(_valueChangedd),
               SizedBox(height: 10),
+              SizedBox(height: 5),
+
+              Text(
+                'luangue choisi:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              SelectableText(_valueChangeddd),
+
+              SizedBox(height: 10),
+
               RaisedButton(
                 onPressed: () {
-                  final loForm = _oFormKey.currentState;
+                  audioCache.play(_valueChangeddd);
 
-                  if (loForm.validate()) {
-                    loForm.save();
-                  }
                 },
                 child: Text('GO'),
               ),
               SizedBox(height: 10),
-              Text(
-                'nombre a compté choisi:',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Card(
+                child:InkWell(
+                  onTap: () {
+
+                    audioCache.play('hsabAr.mp3');
+                  },
+                  child: Text(
+                    'nombre a compté choisi:',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+
               ),
               SizedBox(height: 5),
-              SelectableText(_valueToValidate),
+              SelectableText(_valueChanged),
               SizedBox(height: 10),
 
               Text(
@@ -186,22 +252,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              SelectableText(_valueSaved),
+              SelectableText(_valueChangedd),
               SizedBox(height: 10),
-              Text(
-                'nbre de srie:',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              SelectableText(_valueToValidatee),
-              SizedBox(height: 10),
-              Text(
-                'nbre de srie  onSaved:',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              SelectableText(_valueSavedd),
-              SizedBox(height: 10),
+
+
               RaisedButton(
                 onPressed: () {
                   final loForm = _oFormKey.currentState;
@@ -213,9 +267,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     _valueSaved = '';
                   });
                   setState(() {
-                    _valueChangedd = '';
-                    _valueToValidatee = '';
-                    _valueSavedd = '';
+                    _valueChangedd = 'rr';
+                    _valueToValidatee = 'rr';
+                    _valueSavedd = 'rr';
                   });
                 },
                 child: Text('Reset'),
