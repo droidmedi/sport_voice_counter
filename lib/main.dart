@@ -27,6 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<FormState> _oFormKeyy = GlobalKey<FormState>();
   TextEditingController _controller;
   TextEditingController _controllerr;
+
   //String _initialValue;
   String _valueChanged = '';
   String _valueToValidate = '';
@@ -70,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
       'icon': Icon(Icons.fiber_manual_record),
       'textStyle': TextStyle(color: Colors.red),
     },
+
+
     {
       'value': '3',
       'label': '3',
@@ -117,8 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
-  var count = new Count();
 
+  var count = new Count();
 
   @override
   Widget build(BuildContext context) {
@@ -130,16 +133,14 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Form(
           key: _oFormKey,
-         // key: _oFormKey,
+          // key: _oFormKey,
           child: Column(
             children: <Widget>[
-
               SelectFormField(
-
                 //type: SelectFormFieldType.dialog,
                 controller: _controller,
                 //initialValue: _initialValue,
-                icon: Icon(Icons.format_shapes),
+                icon: Icon(Icons.add_alarm,textDirection: TextDirection.rtl,),
                 labelText: 'nombre a compté',
                 changeIcon: true,
                 dialogTitle: 'Pick a item',
@@ -158,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //type: SelectFormFieldType.dialog,
                 controller: _controller,
                 //initialValue: _initialValue,
-                icon: Icon(Icons.format_shapes),
+                icon: Icon(Icons.accessibility_new),
                 labelText: 'nombre de serie',
                 changeIcon: true,
                 dialogTitle: 'Pick a item',
@@ -177,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //type: SelectFormFieldType.dialog,
                 controller: _controller,
                 //initialValue: _initialValue,
-                icon: Icon(Icons.format_shapes),
+                icon: Icon(Icons.airplanemode_active),
                 labelText: 'langue',
                 changeIcon: true,
                 dialogTitle: 'Pick a item',
@@ -194,7 +195,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 15),
               Text(
-
                 'nbr a compte choisi:',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -205,54 +205,39 @@ class _MyHomePageState extends State<MyHomePage> {
                 'nbre de serie choisi:',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-
-
-
               SizedBox(height: 5),
               SelectableText(_valueChangedd),
               SizedBox(height: 10),
               SizedBox(height: 5),
-
               Text(
                 'luangue choisi:',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 5),
               SelectableText(_valueChangeddd),
-
               SizedBox(height: 10),
-
               RaisedButton(
                 onPressed: () {
-                  if (_valueChanged=="10"  ){
+                  if (_valueChanged == "10") {
                     audioCache.play(_valueChangeddd);
                   }
-
-
-
-
-
                 },
                 child: Text('GO'),
               ),
               SizedBox(height: 10),
               Card(
-                child:InkWell(
-                  onTap: () {
-
-                    audioCache.play('hsabAr.mp3');
-                  },
-                  child: Text(
-                    'nombre a compté choisi:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                )
-
-              ),
+                  child: InkWell(
+                onTap: () {
+                  audioCache.play('hsabAr.mp3');
+                },
+                child: Text(
+                  'nombre a compté choisi:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )),
               SizedBox(height: 5),
               SelectableText(_valueChanged),
               SizedBox(height: 10),
-
               Text(
                 'nombre a compté saved :',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -260,8 +245,6 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 10),
               SelectableText(_valueChangedd),
               SizedBox(height: 10),
-
-
               RaisedButton(
                 onPressed: () {
                   final loForm = _oFormKey.currentState;
