@@ -194,27 +194,60 @@ class _MyHomePageState extends State<MyHomePage> {
                 onSaved: (vall) => setState(() => _valueSaveddd = vall),
               ),
               SizedBox(height: 15),
-              Text(
-                'nbr a compte choisi:',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Card(
+                elevation: 2.2,
+                shadowColor: Colors.red,
+                semanticContainer: false,
+                child: Text(
+                  'Nombre a compté choisi:',
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.2),
+                  textAlign: TextAlign.center,
+                ),
+
               ),
               SizedBox(height: 5),
-              SelectableText(_valueChanged),
-              SizedBox(height: 30),
-              Text(
-                'nbre de serie choisi:',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Card(
+                  elevation: 2.2,
+                  shadowColor: Colors.blue,
+                  semanticContainer: false,
+                  child: SelectableText(_valueChanged,style: TextStyle(fontSize: 30.5),)),
+              SizedBox(height: 10),
+              Card(
+                elevation: 2.2,
+                shadowColor: Colors.red,
+                semanticContainer: false,
+                child: Text(
+                  'Nombre de serie a choisi:',
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.2),
+                  textAlign: TextAlign.center,
+                ),
+
               ),
-              SizedBox(height: 5),
-              SelectableText(_valueChangedd),
+
+              Card(
+                  elevation: 2.2,
+                  shadowColor: Colors.blue,
+                  semanticContainer: false,
+                  child: SelectableText(_valueChangedd,style: TextStyle(fontSize: 30.5),)),
               SizedBox(height: 10),
               SizedBox(height: 5),
-              Text(
-                'luangue choisi:',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Card(
+                elevation: 2.2,
+                shadowColor: Colors.red,
+                semanticContainer: false,
+                child: Text(
+                  'Langue:',
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.2),
+                  textAlign: TextAlign.center,
+                ),
+
               ),
               SizedBox(height: 5),
-              SelectableText(_valueChangeddd),
+              Card(
+                  elevation: 2.2,
+                  shadowColor: Colors.blue,
+                  semanticContainer: false,
+                  child: SelectableText(_valueChangeddd,style: TextStyle(fontSize: 30.5),)),
               SizedBox(height: 10),
               RaisedButton(
                 onPressed: () {
@@ -225,26 +258,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('GO'),
               ),
               SizedBox(height: 10),
-              Card(
-                  child: InkWell(
-                onTap: () {
-                  audioCache.play('hsabAr.mp3');
-                },
-                child: Text(
-                  'nombre a compté choisi:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              )),
-              SizedBox(height: 5),
-              SelectableText(_valueChanged),
-              SizedBox(height: 10),
-              Text(
-                'nombre a compté saved :',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              SelectableText(_valueChangedd),
-              SizedBox(height: 10),
+           
+
               RaisedButton(
                 onPressed: () {
                   final loForm = _oFormKey.currentState;
@@ -256,9 +271,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     _valueSaved = '';
                   });
                   setState(() {
-                    _valueChangedd = 'rr';
-                    _valueToValidatee = 'rr';
-                    _valueSavedd = 'rr';
+                    _valueChangedd = '';
+                    _valueToValidatee = '';
+                    _valueSavedd = '';
+                  });
+                  setState(() {
+                    _valueChangeddd = '';
+                    _valueToValidateee = '';
+                    _valueSaveddd = '';
                   });
                 },
                 child: Text('Reset'),
